@@ -8,7 +8,7 @@ public class CarControler : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
 
-    private float _speed, _accelerationLerpInterpolator, _rotationInput;
+    private float _speed, _accelerationLerpInterpolator, _rotationInput, _currentSpeedMax;
     [SerializeField]
     private float _speedMax = 3, _accelerationFactor, _rotationSpeed = 0.5f;
     private bool _isAccelerating;
@@ -66,6 +66,7 @@ public class CarControler : MonoBehaviour
         if (_isAccelerating)
         {
             _accelerationLerpInterpolator += _accelerationFactor;
+           
         }
         else
         {
@@ -73,6 +74,8 @@ public class CarControler : MonoBehaviour
         }
 
         _accelerationLerpInterpolator = Mathf.Clamp01(_accelerationLerpInterpolator);
+
+        
 
         _speed = _accelerationCurve.Evaluate(_accelerationLerpInterpolator) * _speedMax;
 
@@ -88,10 +91,10 @@ public class CarControler : MonoBehaviour
 
     IEnumerator turbo()
     {
-        _speedMax += 5;
+        _speedMax += 10;
        // _speed += 5;
-        yield return new WaitForSeconds(2);
-        _speedMax -= 5;
+        yield return new WaitForSeconds(0.75f);
+        _speedMax -= 10;
        // _speed -= 5;
     }
 }
