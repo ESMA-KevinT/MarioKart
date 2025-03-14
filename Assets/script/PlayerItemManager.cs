@@ -38,8 +38,10 @@ public class PlayerItemManager : MonoBehaviour
 
     public void UseItem()
     {
+        
         if (_currentItem != null)
         {
+            Debug.Log("ItemUse");
             _currentItem.Activation(this);
             _numberOfItemUse--;
             if (_numberOfItemUse <= 0)

@@ -16,12 +16,12 @@ public class ItemBox : MonoBehaviour
     {
         Debug.Log("touch");
 
-        //PlayerItemManager playerItemManagerInContact = other.GetComponent<PlayerItemManager>();
-        //if (playerItemManagerInContact != null)
-        //{
-        //playerItemManagerInContact.GenerateItem();
+        PlayerItemManager playerItemManagerInContact = other.GetComponent<PlayerItemManager>();
+        if (playerItemManagerInContact != null)
+        {
+        playerItemManagerInContact.GenerateItem();
         StartCoroutine(Respawn());
-        //}
+        }
     }
 
     private IEnumerator Respawn()

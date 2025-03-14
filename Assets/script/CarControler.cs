@@ -83,7 +83,7 @@ public class CarControler : MonoBehaviour
         _rb.MovePosition(transform.position + transform.forward * _speed * Time.fixedDeltaTime);
     }
 
-    void boost()
+    public void boost()
     {
         StartCoroutine(turbo());
 

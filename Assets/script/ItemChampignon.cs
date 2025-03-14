@@ -9,5 +9,6 @@ public class ItemChampignon : Item
     public override void Activation(PlayerItemManager player)
     {
         Debug.Log("champi lancé");
+        player.carControler.boost();
     }
 }
