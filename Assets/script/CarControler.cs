@@ -13,6 +13,8 @@ public class CarControler : MonoBehaviour
     private float _speedMax = 3, _accelerationFactor, _rotationSpeed = 0.5f;
     private bool _isAccelerating;
 
+    private bool _isBoosting = false; 
+
     [SerializeField]
     private AnimationCurve _accelerationCurve;
 
@@ -32,18 +34,21 @@ public class CarControler : MonoBehaviour
         // {
         //transform.eulerAngles += Vector3.up * _rotationSpeed * Time.deltaTime;
         //}
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             _isAccelerating = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.W))
         {
             _isAccelerating = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            boost();
+            if (_isBoosting == false)
+            {
+                boost();
+            }
         }
 
         _rotationInput = Input.GetAxis("Horizontal");
@@ -92,9 +97,12 @@ public class CarControler : MonoBehaviour
     IEnumerator turbo()
     {
         _speedMax += 10;
+
+        _isBoosting = true;
        // _speed += 5;
         yield return new WaitForSeconds(0.75f);
         _speedMax -= 10;
+        _isBoosting = false;
        // _speed -= 5;
     }
 }
