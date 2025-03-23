@@ -18,6 +18,12 @@ public class CarControler : MonoBehaviour
     [SerializeField]
     private AnimationCurve _accelerationCurve;
 
+    [SerializeField]
+    private LayerMask _layerMask;
+
+
+    private float _terrainSpeedVariator;
+
     void Start()
     {
 
@@ -53,6 +59,35 @@ public class CarControler : MonoBehaviour
 
         _rotationInput = Input.GetAxis("Horizontal");
 
+
+        //
+
+        if (Physics.Raycast(transform.position, transform.up * -1, out var info, 1, _layerMask))
+        {
+            if (_isBoosting == false)
+            {
+
+                Ground groundBellow = info.transform.GetComponent<Ground>();
+                if (groundBellow != null)
+                {
+                    _terrainSpeedVariator = groundBellow.groundEffect;
+                }
+                else
+                {
+                    _terrainSpeedVariator = 1;
+                }
+            }
+            else
+            {
+                _terrainSpeedVariator = 1;
+            }
+
+        }
+        else
+        {
+            _terrainSpeedVariator = 1;
+        }
+
         //var xAngle = transform.eulerAngles.x;
         //if (xAngle>180)
         //{
@@ -82,7 +117,7 @@ public class CarControler : MonoBehaviour
 
         
 
-        _speed = _accelerationCurve.Evaluate(_accelerationLerpInterpolator) * _speedMax;
+        _speed = _accelerationCurve.Evaluate(_accelerationLerpInterpolator) * _speedMax * _terrainSpeedVariator;
 
         transform.eulerAngles += Vector3.up * _rotationSpeed * Time.deltaTime * _rotationInput;
         _rb.MovePosition(transform.position + transform.forward * _speed * Time.fixedDeltaTime);
