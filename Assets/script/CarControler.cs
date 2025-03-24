@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -48,7 +49,7 @@ public class CarControler : MonoBehaviour
             if (_firstInput)
             {
                 boostStart();
-                _firstInput = false;    
+                _firstInput = false;
             }
         }
         if (Input.GetKeyUp(KeyCode.W))
@@ -66,7 +67,10 @@ public class CarControler : MonoBehaviour
 
         _rotationInput = Input.GetAxis("Horizontal");
 
+    
 
+        
+       
         //
 
         if (Physics.Raycast(transform.position, transform.up * -1, out var info, 1, _layerMask))
@@ -107,6 +111,18 @@ public class CarControler : MonoBehaviour
         //transform.eulerAngles = new Vector3(xAngle,yAngle,zAngle);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("turboPad"))
+        {
+            if (_isBoosting == false)
+            {
+                boost();
+            }
+        }
+
+    }
     private void FixedUpdate()
     {
 
