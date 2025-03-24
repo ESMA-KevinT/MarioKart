@@ -15,6 +15,8 @@ public class CarControler : MonoBehaviour
 
     private bool _isBoosting = false; 
 
+    private bool _firstInput=true;
+
     [SerializeField]
     private AnimationCurve _accelerationCurve;
 
@@ -43,6 +45,11 @@ public class CarControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             _isAccelerating = true;
+            if (_firstInput)
+            {
+                boostStart();
+                _firstInput = false;    
+            }
         }
         if (Input.GetKeyUp(KeyCode.W))
         {
@@ -139,5 +146,23 @@ public class CarControler : MonoBehaviour
         _speedMax -= 10;
         _isBoosting = false;
        // _speed -= 5;
+    }
+
+    public void boostStart()
+    {
+        StartCoroutine(turboStart());
+
+    }
+
+    IEnumerator turboStart()
+    {
+        _speedMax += 20;
+
+        _isBoosting = true;
+        // _speed += 5;
+        yield return new WaitForSeconds(0.75f);
+        _speedMax -= 20;
+        _isBoosting = false;
+        // _speed -= 5;
     }
 }
