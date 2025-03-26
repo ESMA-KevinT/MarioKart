@@ -18,7 +18,7 @@ public class ItemShell : Item
     {
         Instantiate(shell, player.transform.position, player.transform.rotation);
 
-        //_rgb.velocity = player.transform.forward * 500;
+       
         
     }
 

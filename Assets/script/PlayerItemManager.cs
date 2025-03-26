@@ -18,6 +18,8 @@ public class PlayerItemManager : MonoBehaviour
 
     public CarControler carControler;
 
+    public ScriptableObject ItemShell;
+
 
     private void Update()
     {
@@ -50,6 +52,12 @@ public class PlayerItemManager : MonoBehaviour
                 _itemImage.sprite = null;
             }
         }
+
+        if (_currentItem == ItemShell)
+        {
+
+        }
+
     }
 
 }

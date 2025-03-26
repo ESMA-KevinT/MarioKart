@@ -15,5 +15,5 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 04f6d1e8fe8f0db46bc836bc2bdacf49, type: 3}
   itemName: 
   itemUseCount: 1
-  shell: {fileID: 8886547501283496184, guid: 48556fef73f3e9a489612667622e373b, type: 3}
+  shell: {fileID: 7600847949469207335, guid: 126e90a3e3bdb18459c5b9eacda67984, type: 3}
   _rgb: {fileID: 4495848401965853461, guid: 48556fef73f3e9a489612667622e373b, type: 3}
