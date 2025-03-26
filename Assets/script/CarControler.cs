@@ -18,6 +18,8 @@ public class CarControler : MonoBehaviour
 
     private bool _firstInput=true;
 
+    private bool _isMovingBack;
+
     [SerializeField]
     private AnimationCurve _accelerationCurve;
 
@@ -57,6 +59,17 @@ public class CarControler : MonoBehaviour
             _isAccelerating = false;
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            _isMovingBack = true;
+           
+        }
+       
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+          _isMovingBack= false;
+        }
+       
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_isBoosting == false)
@@ -73,7 +86,10 @@ public class CarControler : MonoBehaviour
        //
         _rotationInput = Input.GetAxis("Horizontal");
 
-    
+        if (_isMovingBack)
+        {
+            _rb.velocity = transform.forward * -10;
+        }
 
         
        
@@ -141,6 +157,8 @@ public class CarControler : MonoBehaviour
         {
             _accelerationLerpInterpolator -= _accelerationFactor * 2;
         }
+
+        
 
         _accelerationLerpInterpolator = Mathf.Clamp01(_accelerationLerpInterpolator);
 

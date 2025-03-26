@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: 
   itemUseCount: 1
   shell: {fileID: 8886547501283496184, guid: 48556fef73f3e9a489612667622e373b, type: 3}
+  _rgb: {fileID: 4495848401965853461, guid: 48556fef73f3e9a489612667622e373b, type: 3}

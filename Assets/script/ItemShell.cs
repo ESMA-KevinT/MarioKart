@@ -7,6 +7,7 @@ public class ItemShell : Item
 {
     public GameObject shell;
 
+    [SerializeField]
     private Rigidbody _rgb;
     
     
@@ -14,7 +15,7 @@ public class ItemShell : Item
     {
         Instantiate(shell, player.transform.position, player.transform.rotation);
         
-       
+       _rgb.AddForce(player.transform.forward * 350);
     }
 
 }
