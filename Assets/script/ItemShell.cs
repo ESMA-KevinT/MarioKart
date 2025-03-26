@@ -10,13 +10,17 @@ public class ItemShell : Item
     
     [SerializeField]
     private Rigidbody _rgb;
-    
-    
+
+
+
+
     public override void Activation(PlayerItemManager player)
     {
         Instantiate(shell, player.transform.position, player.transform.rotation);
 
         //_rgb.velocity = player.transform.forward * 500;
+        
     }
 
+   
 }

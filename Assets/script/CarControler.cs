@@ -18,7 +18,10 @@ public class CarControler : MonoBehaviour
 
     private bool _firstInput=true;
 
+    public bool playerSafe = false;
     private bool _isMovingBack;
+
+
 
     [SerializeField]
     private MeshRenderer _mr;
@@ -28,6 +31,7 @@ public class CarControler : MonoBehaviour
 
     [SerializeField]
     private LayerMask _layerMask;
+
 
 
     private float _terrainSpeedVariator;
@@ -149,7 +153,10 @@ public class CarControler : MonoBehaviour
 
         if (other.CompareTag("shell"))
         {
-            
+
+                Debug.Log("stunned");
+            StartCoroutine(stunned());
+
         }
 
     }
@@ -158,7 +165,15 @@ public class CarControler : MonoBehaviour
 
         if (_isAccelerating)
         {
+           // if (_isStun == false)
+           // { 
             _accelerationLerpInterpolator += _accelerationFactor;
+       //}
+       //else
+       //{
+       //    _accelerationLerpInterpolator -= _accelerationFactor * 4;
+       //}
+       //
            
         }
         else
@@ -213,6 +228,20 @@ public class CarControler : MonoBehaviour
         _isBoosting = false;
         // _speed -= 5;
     }
+
+    IEnumerator stunned()
+    {
+        Debug.Log("ralentit");
+ 
+        _speedMax = 0;
+
+    yield return new WaitForSeconds(0.75f);
+ 
+        _speedMax = 20;
+    }
+
+
+    
 
     public void featherJump()
     {

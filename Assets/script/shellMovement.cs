@@ -8,6 +8,8 @@ public class shellMovement : MonoBehaviour
     private Rigidbody _rb;
     [SerializeField]
     private Collider _bc;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,20 +19,12 @@ public class shellMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rb.velocity = transform.forward * 20;
-        //phasing();
-        _bc.enabled = false;
+        
+        _rb.velocity = transform.forward * 25;
+ 
+        //_bc.enabled = false;
 
 
     }
-    //IEnumerator phasing()
-    //{
-    //   _bc.enabled = false;
-    //    Debug.Log("disabled");
-    //    yield return new WaitForSeconds(2f);
-    //    Debug.Log("notdisabled");
-    //    _bc.enabled = true;
-    //
-    //
-    //}
+
 }
