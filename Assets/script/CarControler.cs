@@ -65,6 +65,12 @@ public class CarControler : MonoBehaviour
             }
         }
 
+       // if (Input.GetKeyDown(KeyCode.Q))
+       // {
+       //     featherJump();
+       // }
+       //
+       //
         _rotationInput = Input.GetAxis("Horizontal");
 
     
@@ -180,5 +186,11 @@ public class CarControler : MonoBehaviour
         _speedMax -= 20;
         _isBoosting = false;
         // _speed -= 5;
+    }
+
+    public void featherJump()
+    {
+        Debug.Log("isJumping");
+        _rb.AddForce(transform.up * 350);
     }
 }
