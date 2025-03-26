@@ -14,8 +14,8 @@ public class ItemShell : Item
     public override void Activation(PlayerItemManager player)
     {
         Instantiate(shell, player.transform.position, player.transform.rotation);
-        
-       _rgb.AddForce(player.transform.forward * 350);
+
+        //_rgb.velocity = player.transform.forward * 500;
     }
 
 }

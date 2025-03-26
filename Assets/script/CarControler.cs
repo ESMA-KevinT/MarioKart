@@ -21,6 +21,9 @@ public class CarControler : MonoBehaviour
     private bool _isMovingBack;
 
     [SerializeField]
+    private MeshRenderer _mr;
+
+    [SerializeField]
     private AnimationCurve _accelerationCurve;
 
     [SerializeField]
@@ -210,5 +213,8 @@ public class CarControler : MonoBehaviour
     {
         Debug.Log("isJumping");
         _rb.AddForce(transform.up * 350);
+
+  
+
     }
 }

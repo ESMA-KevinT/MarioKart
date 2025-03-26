@@ -1426,6 +1426,7 @@ MonoBehaviour:
   _speedMax: 20
   _accelerationFactor: 0.02
   _rotationSpeed: 200
+  _mr: {fileID: 0}
   _accelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -1487,6 +1488,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemList:
+  - {fileID: 11400000, guid: 44d5a2f006d613a4c814d1183cdcf4db, type: 2}
+  - {fileID: 11400000, guid: f391b741c6e860f468e4d8a4aeed7558, type: 2}
   - {fileID: 11400000, guid: 0737684cd00599b40a662057bb713e09, type: 2}
   _currentItem: {fileID: 0}
   _itemImage: {fileID: 1402341945}
