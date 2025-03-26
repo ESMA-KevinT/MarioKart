@@ -147,6 +147,11 @@ public class CarControler : MonoBehaviour
             }
         }
 
+        if (other.CompareTag("shell"))
+        {
+            
+        }
+
     }
     private void FixedUpdate()
     {

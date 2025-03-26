@@ -7,6 +7,7 @@ public class ItemShell : Item
 {
     public GameObject shell;
 
+    
     [SerializeField]
     private Rigidbody _rgb;
     
