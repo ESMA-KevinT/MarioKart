@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class CarControler : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class CarControler : MonoBehaviour
 
     [SerializeField]
     private LayerMask _layerMask;
+
+    [SerializeField]
+    public GameObject inkSprite;
 
 
 
@@ -79,10 +83,13 @@ public class CarControler : MonoBehaviour
        
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (_isBoosting == false)
-            {
-                boost();
-            }
+           // if (_isBoosting == false)
+           // {
+           //     boost();
+           // }
+
+            inkSprite.SetActive(false);
+
         }
 
        // if (Input.GetKeyDown(KeyCode.Q))
@@ -199,6 +206,11 @@ public class CarControler : MonoBehaviour
 
     }
 
+    public void inkScreen()
+    {
+        StartCoroutine(inked());
+    }
+
     IEnumerator turbo()
     {
         _speedMax += 10;
@@ -241,8 +253,6 @@ public class CarControler : MonoBehaviour
     }
 
 
-    
-
     public void featherJump()
     {
         Debug.Log("isJumping");
@@ -251,4 +261,14 @@ public class CarControler : MonoBehaviour
   
 
     }
+
+    IEnumerator inked()
+    {
+
+        inkSprite.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        inkSprite.SetActive(false);
+
+    }
+
 }
