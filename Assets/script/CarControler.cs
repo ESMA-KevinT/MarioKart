@@ -231,12 +231,12 @@ public class CarControler : MonoBehaviour
 
     IEnumerator turboStart()
     {
-        _speedMax += 20;
+        _speedMax += 30;
 
         _isBoosting = true;
         // _speed += 5;
         yield return new WaitForSeconds(0.75f);
-        _speedMax -= 20;
+        _speedMax -= 30;
         _isBoosting = false;
         // _speed -= 5;
     }
