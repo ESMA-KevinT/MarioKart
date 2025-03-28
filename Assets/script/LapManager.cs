@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LapManager : MonoBehaviour
 {
-    public int _lapNumber;
+    public int _lapNumber=1;
     public List<CheckPoint> _checkpoints;
     private int _numberOfCheckpoints;
-
+    [SerializeField]
+    private TextMeshProUGUI _lap;
 
     private void Start()
     {
@@ -33,9 +36,11 @@ public class LapManager : MonoBehaviour
         if (_checkpoints.Count > _numberOfCheckpoints / 2)
         {
             _lapNumber++;
+            _lap.text = "lap" + _lapNumber;
+
             Debug.Log("Tour Fini, on entre dans le tour " + _lapNumber);
             _checkpoints.Clear();
-            if (_lapNumber >= 3)
+            if (_lapNumber == 4)
             {
                 Debug.Log("Gg WP");
             }
