@@ -8,12 +8,12 @@ public class CheckPoint : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-        Debug.Log("check");
+        
       var otherLapManager = other.GetComponent<LapManager>();
       if (otherLapManager != null)
       {
           otherLapManager.AddCheckPoint(this);
-          Debug.Log("checkpoint");
+         
       }
   }
 }

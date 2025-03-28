@@ -6,11 +6,17 @@ using UnityEngine.UI;
 
 public class LapManager : MonoBehaviour
 {
-    public int _lapNumber=1;
-    public List<CheckPoint> _checkpoints;
+    private int _lapNumber=1;
+    private List<CheckPoint> _checkpoints;
     private int _numberOfCheckpoints;
     [SerializeField]
     private TextMeshProUGUI _lap;
+
+    [SerializeField]
+    private GameObject _victory;
+
+    [SerializeField]
+    private GameObject _victoryOther;
 
     private void Start()
     {
@@ -38,11 +44,13 @@ public class LapManager : MonoBehaviour
             _lapNumber++;
             _lap.text = "lap" + _lapNumber;
 
-            Debug.Log("Tour Fini, on entre dans le tour " + _lapNumber);
+          
             _checkpoints.Clear();
             if (_lapNumber == 4)
             {
-                Debug.Log("Gg WP");
+                _victory.SetActive(true);
+                Destroy(_victoryOther); 
+                
             }
         }
     }
