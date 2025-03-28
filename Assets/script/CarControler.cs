@@ -23,6 +23,10 @@ public class CarControler : MonoBehaviour
     private bool _isMovingBack;
 
 
+    [SerializeField]
+    private string _DirectionInputName = "Horizontal", _accelerateInputName = "Accelerate", _reverseInputName = "Reverse";
+
+
 
 
 
@@ -48,7 +52,7 @@ public class CarControler : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown(_accelerateInputName))
         {
             _isAccelerating = true;
             if (_firstInput)
@@ -57,25 +61,25 @@ public class CarControler : MonoBehaviour
                 _firstInput = false;
             }
         }
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetButtonUp(_accelerateInputName))
         {
             _isAccelerating = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetButtonDown(_reverseInputName))
         {
             _isMovingBack = true;
            
         }
        
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetButtonUp(_reverseInputName))
         {
           _isMovingBack= false;
         }
        
 
 
-        _rotationInput = Input.GetAxis("Horizontal");
+        _rotationInput = Input.GetAxis(_DirectionInputName);
 
         if (_isMovingBack)
         {

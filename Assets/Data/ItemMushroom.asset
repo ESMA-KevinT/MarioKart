@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43952cea74dbc564b8ed78f1c7b4c80a, type: 3}
-  m_Name: ItemChampignon
+  m_Name: ItemMushroom
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: 3e5ac82b29bef074aa256c7eb87418aa, type: 3}
   itemName: Mushroom
