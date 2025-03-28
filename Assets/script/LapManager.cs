@@ -4,34 +4,41 @@ using UnityEngine;
 
 public class LapManager : MonoBehaviour
 {
+    public int _lapNumber;
+    public List<CheckPoint> _checkpoints;
+    private int _numberOfCheckpoints;
 
-  //  private int _lapnumber;
-  //  private Lise<Checkpoint> _checkpoints;
-  //  private int _numberOfCheckpoints;
-  //
-  //
-  //  private void Start()
-  //  {
-  //      _numberOfCheckpoints = FindObjectsByType<AddCheckPoint>()
-  //  }
-  //  public void AddCheckPoint(Checkpoint checkPointToAdd)
-  //  {
-  //      if(checkPointToAdd.isFinishLine)
-  //      {
-  //          FinishLap();
-  //      }
-  //
-  //      if (_checkpoints.Contains(checkpoinToAdd) == false)
-  //      {
-  //          _checkpoints.Add(checkPointToAdd);
-  //      }
-  //  }
-  //
-  //  private void FinishLap()
-  //  {
-  //      if (_checkpoints.Count > _numberOfCheckpoints/2)
-  //      {
-  //          _lap 
-  //      }
-  //  }
+
+    private void Start()
+    {
+        _numberOfCheckpoints = FindObjectsByType<CheckPoint>(FindObjectsSortMode.None).Length;
+        _checkpoints = new List<CheckPoint>();
+    }
+
+    public void AddCheckPoint(CheckPoint checkPointToAdd)
+    {
+        if (checkPointToAdd.isFinishLine)
+        {
+            FinishLap();
+        }
+
+        if (_checkpoints.Contains(checkPointToAdd) == false)
+        {
+            _checkpoints.Add(checkPointToAdd);
+        }
+    }
+
+    private void FinishLap()
+    {
+        if (_checkpoints.Count > _numberOfCheckpoints / 2)
+        {
+            _lapNumber++;
+            Debug.Log("Tour Fini, on entre dans le tour " + _lapNumber);
+            _checkpoints.Clear();
+            if (_lapNumber >= 3)
+            {
+                Debug.Log("Gg WP");
+            }
+        }
+    }
 }
