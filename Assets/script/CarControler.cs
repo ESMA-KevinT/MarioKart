@@ -232,7 +232,7 @@ public class CarControler : MonoBehaviour
     {
 
         inkSprite.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         inkSprite.SetActive(false);
 
     }
