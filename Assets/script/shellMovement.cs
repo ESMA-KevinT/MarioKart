@@ -6,8 +6,7 @@ public class shellMovement : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody _rb;
-    [SerializeField]
-    private Collider _bc;
+
 
 
     // Start is called before the first frame update
@@ -22,9 +21,6 @@ public class shellMovement : MonoBehaviour
         
         _rb.velocity = transform.forward * 25;
  
-        //_bc.enabled = false;
-
-
     }
 
 }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemChampignon", menuName = "Scriptable Objects/ItemsChampigon")]
-public class ItemChampignon : Item
+public class ItemMushroom : Item
 
 {
     public override void Activation(PlayerItemManager player)
     {
-        Debug.Log("champi lancé");
+ 
         player.carControler.boost();
     }
 }

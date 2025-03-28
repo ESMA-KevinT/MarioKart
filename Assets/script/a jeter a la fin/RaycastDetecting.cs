@@ -30,7 +30,6 @@ public class RaycastDetecting : MonoBehaviour
             {
                
 
-                Debug.Log("touché");
 
             }
         }

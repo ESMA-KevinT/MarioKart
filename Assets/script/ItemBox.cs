@@ -14,7 +14,7 @@ public class ItemBox : MonoBehaviour
     private float _waitBeforeRespawn = 1;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("touch");
+       
 
         PlayerItemManager playerItemManagerInContact = other.GetComponent<PlayerItemManager>();
         if (playerItemManagerInContact != null)

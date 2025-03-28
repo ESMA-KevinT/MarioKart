@@ -10,7 +10,7 @@ public class CarControler : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
 
-    private float _speed, _accelerationLerpInterpolator, _rotationInput, _currentSpeedMax;
+    private float _speed, _accelerationLerpInterpolator, _rotationInput;
     [SerializeField]
     private float _speedMax = 3, _accelerationFactor, _rotationSpeed = 0.5f;
     private bool _isAccelerating;
@@ -19,13 +19,12 @@ public class CarControler : MonoBehaviour
 
     private bool _firstInput=true;
 
-    public bool playerSafe = false;
+    
     private bool _isMovingBack;
 
 
 
-    [SerializeField]
-    private MeshRenderer _mr;
+
 
     [SerializeField]
     private AnimationCurve _accelerationCurve;
@@ -48,14 +47,7 @@ public class CarControler : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //transform.eulerAngles += Vector3.down * _rotationSpeed * Time.deltaTime;
-        //}
-        // if (Input.GetKey(KeyCode.RightArrow))
-        // {
-        //transform.eulerAngles += Vector3.up * _rotationSpeed * Time.deltaTime;
-        //}
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             _isAccelerating = true;
@@ -81,23 +73,8 @@ public class CarControler : MonoBehaviour
           _isMovingBack= false;
         }
        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-           // if (_isBoosting == false)
-           // {
-           //     boost();
-           // }
 
-            inkSprite.SetActive(false);
 
-        }
-
-       // if (Input.GetKeyDown(KeyCode.Q))
-       // {
-       //     featherJump();
-       // }
-       //
-       //
         _rotationInput = Input.GetAxis("Horizontal");
 
         if (_isMovingBack)
@@ -107,7 +84,7 @@ public class CarControler : MonoBehaviour
 
         
        
-        //
+   
 
         if (Physics.Raycast(transform.position, transform.up * -1, out var info, 1, _layerMask))
         {
@@ -135,16 +112,7 @@ public class CarControler : MonoBehaviour
             _terrainSpeedVariator = 1;
         }
 
-        //var xAngle = transform.eulerAngles.x;
-        //if (xAngle>180)
-        //{
-        //    xAngle = Mathf.Clamp(transform.eulerAngles.x, 0, 40);
-        //    xAngle -= 360;
-        //}
-
-        //var yAngle = transform.eulerAngles.y;
-        //var zAngle = 0;
-        //transform.eulerAngles = new Vector3(xAngle,yAngle,zAngle);
+ 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -161,7 +129,7 @@ public class CarControler : MonoBehaviour
         if (other.CompareTag("shell"))
         {
 
-                Debug.Log("stunned");
+                
             StartCoroutine(stunned());
 
         }
@@ -172,15 +140,9 @@ public class CarControler : MonoBehaviour
 
         if (_isAccelerating)
         {
-           // if (_isStun == false)
-           // { 
+           
             _accelerationLerpInterpolator += _accelerationFactor;
-       //}
-       //else
-       //{
-       //    _accelerationLerpInterpolator -= _accelerationFactor * 4;
-       //}
-       //
+
            
         }
         else
@@ -216,11 +178,11 @@ public class CarControler : MonoBehaviour
         _speedMax += 10;
 
         _isBoosting = true;
-       // _speed += 5;
+       
         yield return new WaitForSeconds(0.75f);
         _speedMax -= 10;
         _isBoosting = false;
-       // _speed -= 5;
+
     }
 
     public void boostStart()
@@ -234,16 +196,16 @@ public class CarControler : MonoBehaviour
         _speedMax += 30;
 
         _isBoosting = true;
-        // _speed += 5;
+      
         yield return new WaitForSeconds(0.75f);
         _speedMax -= 30;
         _isBoosting = false;
-        // _speed -= 5;
+     
     }
 
     IEnumerator stunned()
     {
-        Debug.Log("ralentit");
+        
  
         _speedMax = 0;
 
@@ -255,7 +217,7 @@ public class CarControler : MonoBehaviour
 
     public void featherJump()
     {
-        Debug.Log("isJumping");
+       
         _rb.AddForce(transform.up * 350);
 
   

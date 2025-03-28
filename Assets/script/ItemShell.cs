@@ -7,12 +7,8 @@ public class ItemShell : Item
 {
     public GameObject shell;
 
-    
     [SerializeField]
     private Rigidbody _rgb;
-
-
-
 
     public override void Activation(PlayerItemManager player)
     {
